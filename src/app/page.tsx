@@ -10,7 +10,7 @@ enum Popup {
   success,
 }
 
-const env = "http://localhost:8080";
+const env = process.env.NEXT_PUBLIC_URL;
 
 interface TypeImage {
   id: string;
@@ -49,7 +49,7 @@ export default function Home() {
             </button>
           </li>
           {images.map((obj: any) => (
-            <li className={style_card}>
+            <li key={obj.id} className={style_card}>
               <button
                 className="w-full h-full flex flex-col justify-center items-center"
                 onClick={() => {
