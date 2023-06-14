@@ -10,7 +10,7 @@ enum Popup {
   success,
 }
 
-const env = "https://22bd-182-253-183-6.ap.ngrok.io";
+const env = "http://localhost:8080";
 
 interface TypeImage {
   id: string;
