@@ -1,113 +1,251 @@
-import Image from 'next/image'
+"use client";
+import axios from "axios";
+import { useEffect, useState } from "react";
+import { useDropzone } from "react-dropzone";
 
-export default function Home() {
-  return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">src/app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
-
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className="mb-32 grid text-center lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800 hover:dark:bg-opacity-30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Explore the Next.js 13 playground.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
-  )
+enum Popup {
+  none,
+  add,
+  edit,
+  success,
 }
+
+const env = "https://22bd-182-253-183-6.ap.ngrok.io";
+
+interface TypeImage {
+  id: string;
+  filename: string;
+  path: string;
+  created_at: string;
+}
+export default function Home() {
+  const [popup, setPopUp] = useState<Popup>(Popup.none),
+    [edit, setEdit] = useState(""),
+    [images, setImages] = useState<TypeImage[]>([]);
+
+  useEffect(() => {
+    axios.get(`${env}/images`).then((res) => {
+      setImages(res.data);
+    });
+  }, []);
+
+  const style_card =
+    "aspect-square rounded-xl bg-neutral-900 hover:bg-neutral-800 p-4";
+  return (
+    <>
+      <main className="py-24 px-6 min-h-screen max-w-screen-2xl mx-auto">
+        <h1 className="mb-24 text-3xl font-bold">Image Resizer</h1>
+        <ul className="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-5">
+          <li
+            className={`${style_card} border border-dashed border-spacing-6 border-opacity-50 border-white`}
+          >
+            <button
+              className="w-full h-full flex flex-col justify-center items-center"
+              onClick={() => {
+                setPopUp(Popup.add);
+              }}
+            >
+              +
+            </button>
+          </li>
+          {images.map((obj: any) => (
+            <li className={style_card}>
+              <button
+                className="w-full h-full flex flex-col justify-center items-center"
+                onClick={() => {
+                  setPopUp(Popup.edit);
+                  setEdit(obj);
+                }}
+              >
+                <img className="object-contain w-full h-full" src={obj.path} alt="" />
+              </button>
+            </li>
+          ))}
+        </ul>
+
+        {popup === Popup.edit && (
+          <EditPopUp
+            object={edit}
+            close={() => {
+              setPopUp(Popup.none);
+            }}
+          />
+        )}
+        {popup === Popup.add && (
+          <AddPopUp
+            close={() => {
+              setPopUp(Popup.none);
+            }}
+            setPopup={setPopUp}
+          />
+        )}
+        {popup === Popup.success && (
+          <SuccessPopUp
+            close={() => {
+              setPopUp(Popup.none);
+            }}
+          />
+        )}
+      </main>
+    </>
+  );
+}
+
+interface PropsEdit {
+  object?: any;
+  close: any;
+  setPopup?: any;
+}
+
+const EditPopUp = (props: PropsEdit) => {
+  const style_form = "bg-neutral-700 rounded w-24 mb-4",
+    [size, setSize] = useState({
+      width: 0,
+      height: 0,
+    }),
+    [newImg, setNewImg] = useState<string>("");
+
+  const handleChange = (e: any) => [
+    setSize({ ...size, [e.target.name]: Number(e.target.value) }),
+  ];
+
+  const handleSubmit = (e: any) => {
+    e.preventDefault();
+    axios
+      .get(
+        `${env}/resize/${props.object.filename}?width=${size.width}&height=${size.height}`
+      )
+      .then((res) => {
+        setNewImg(res.data.path);
+      });
+  };
+
+  return (
+    <div
+      className="bg-black bg-opacity-20 fixed top-0 left-0 h-screen w-screen flex justify-center items-center"
+      onClick={() => {
+        props.close();
+      }}
+    >
+      <div
+        className="bg-neutral-800 px-6 py-8 rounded-xl max-w-screen-xl grid grid-cols-3"
+        onClick={(e) => {
+          e.stopPropagation();
+        }}
+      >
+        <img src={props.object.path} alt="" />
+        <form className="p-4 w-full h-full bg-inherit" onSubmit={handleSubmit}>
+          <div className="w-min mx-auto">
+            <label htmlFor="width">Width:</label>
+            <br />
+            <input
+              type="number"
+              name="width"
+              className={style_form}
+              onChange={handleChange}
+              value={size.width}
+            />
+          </div>
+          <div className="w-min mx-auto">
+            <label htmlFor="height">Height:</label>
+            <br />
+            <input
+              type="number"
+              name="height"
+              className={style_form}
+              onChange={handleChange}
+              value={size.height}
+            />
+          </div>
+          <button
+            type="submit"
+            className="bg-neutral-600 py-1 px-4 rounded w-full"
+          >
+            Resize
+          </button>
+        </form>
+        {newImg === "" ? <div>Waiting Image</div> : <img src={newImg} alt="" />}
+      </div>
+    </div>
+  );
+};
+
+const AddPopUp = (props: PropsEdit) => {
+  const { acceptedFiles, getRootProps, getInputProps } = useDropzone({
+    accept: {
+      "image/jpeg": [],
+      "image/jpg": [],
+      "image/png": [],
+      "image/webp": [],
+    },
+  });
+
+  const handleSubmit = async (e: any) => {
+    e.preventDefault();
+    let formData = new FormData();
+    formData.append("image", acceptedFiles[0]);
+
+    axios
+      .post(`${env}/upload`, formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      })
+      .then((res) => {
+        props.setPopup(Popup.success);
+      });
+  };
+
+  return (
+    <div
+      className="bg-black bg-opacity-20 fixed top-0 left-0 h-screen w-screen flex justify-center items-center"
+      onClick={props.close}
+    >
+      <form
+        className="bg-neutral-800 px-6 py-8 rounded-xl max-w-screen-xl"
+        onClick={(e) => {
+          e.stopPropagation();
+        }}
+        onSubmit={handleSubmit}
+      >
+        {acceptedFiles.length > 0 ? (
+          <div className="grid gap-6">
+            <img
+              src={URL.createObjectURL(acceptedFiles[0])}
+              alt="uploaded image"
+            />
+            <button className="bg-neutral-600 py-3 rounded">Submit</button>
+          </div>
+        ) : (
+          <div
+            {...getRootProps({ className: "dropzone" })}
+            className="p-5 cursor-pointer border border-dashed rounded"
+          >
+            <input {...getInputProps()} />
+            <p>Drag 'n' drop some files here, or click to select files</p>
+          </div>
+        )}
+      </form>
+    </div>
+  );
+};
+
+const SuccessPopUp = (props: PropsEdit) => {
+  return (
+    <div
+      className="bg-black bg-opacity-20 fixed top-0 left-0 h-screen w-screen flex justify-center items-center"
+      onClick={() => {
+        props.close();
+      }}
+    >
+      <div
+        className="bg-neutral-800 px-6 py-8 rounded-xl max-w-screen-xl"
+        onClick={(e) => {
+          e.stopPropagation();
+        }}
+      >
+        Image Uploaded
+      </div>
+    </div>
+  );
+};
